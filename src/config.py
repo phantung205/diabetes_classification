@@ -22,3 +22,14 @@ eda_report_dir = os.path.join(report_dir,"eda")
 # name file report
 file_name_report  = "report_diabetes.html"
 
+# --------------------------
+# required columns
+# --------------------------
+target_col = ["Outcome"]
+numerical_col = ["Pregnancies","Glucose","BloodPressure","SkinThickness","Insulin","BMI","DiabetesPedigreeFunction","Age"]
+
+# --------------------------
+# test size và random-state
+# -------------------------
+test_size = 0.2
+random_state = 42
