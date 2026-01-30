@@ -21,11 +21,14 @@ report_dir = os.path.join(base_dir,"reports")
 eda_report_dir = os.path.join(report_dir,"eda")
 # name file report
 file_name_report  = "report_diabetes.html"
+# dir result
+dir_result = os.path.join(report_dir,"result")
 
 # --------------------------
 # required columns
 # --------------------------
-target_col = ["Outcome"]
+target_col = [
+    "Outcome"]
 numerical_col = ["Pregnancies","Glucose","BloodPressure","SkinThickness","Insulin","BMI","DiabetesPedigreeFunction","Age"]
 
 # --------------------------
@@ -33,3 +36,8 @@ numerical_col = ["Pregnancies","Glucose","BloodPressure","SkinThickness","Insuli
 # -------------------------
 test_size = 0.2
 random_state = 42
+
+# ------------------------
+# dir model
+# ------------------------
+dir_model = os.path.join(base_dir,"model")
