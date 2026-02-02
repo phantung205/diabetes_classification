@@ -7,7 +7,7 @@ import os
 def load_data():
     return pd.read_csv(config.raw_data_path)
 
-def  clean_raw_data(df):
+def  clean_raw_data(df, is_train=True):
     df = df.copy()
 
     #  xóa các cột có dữ liệu trung lặp
@@ -22,11 +22,14 @@ def  clean_raw_data(df):
         df = df[df["age"] > 0]
 
     # dữ lại các cột cần
-    required_cols = (
-        config.numerical_col +
-        config.target_col
-    )
-    df = df[required_cols]
+    if is_train:
+        required_cols = (
+            config.numerical_col +
+            config.target_col
+        )
+        df = df[required_cols]
+    else :
+        df = df[config.numerical_col]
 
     return df
 
@@ -42,7 +45,7 @@ def preprocess_and_split(test_size=None,random_state=None):
     df = load_data()
 
     # clear data
-    df = clean_raw_data(df)
+    df = clean_raw_data(df,True)
 
     # split targit , sample
     x = df.drop(config.target_col,axis=1)
