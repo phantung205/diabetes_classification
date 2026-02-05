@@ -1,7 +1,7 @@
 import os.path
 
 from src import config
-from ydata_profiling import profile_report, ProfileReport
+from ydata_profiling import  ProfileReport
 import pandas as pd
 
 def generate_classifier_report():

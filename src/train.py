@@ -16,8 +16,8 @@ from sklearn.metrics import classification_report,roc_auc_score
 def parse_args():
     p = argparse.ArgumentParser(description="Train a classification model for diabetes")
     # argument test size and random state
-    p.add_argument("--random_state","-r",type=int,default=42, help="random state")
-    p.add_argument("--test_size","-t",type=float,default=0.2,help="test size")
+    p.add_argument("--random_state","-r",type=int,default=config.random_state, help="random state")
+    p.add_argument("--test_size","-t",type=float,default=config.test_size,help="test size")
     # name model
     p.add_argument("--model_name","-m",type=str,default="random_forest", help="choice model")
     # argument randomforest
