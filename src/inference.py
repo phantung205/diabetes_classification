@@ -38,7 +38,7 @@ def model_from_file(file_path, model_name):
     # load model
     model = load_model(model_name)
 
-    # load model
+    # load data
     if file_path.endswith(".csv"):
         try:
             df = pd.read_csv(file_path)

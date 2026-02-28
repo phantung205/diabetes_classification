@@ -18,9 +18,8 @@ def main(args):
     # laod model
     model_path = os.path.join(config.dir_model,f"{args.model_name}.pkl")
     if not os.path.isdir(model_path):
-        print("not found checkpoint model")
+        print("You need to train the model to have checkpoints before testing.")
         exit(0)
-
     model = joblib.load(model_path)
 
     y_pred = model.predict(x_test)
