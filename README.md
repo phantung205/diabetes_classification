@@ -117,13 +117,13 @@ data/raw/diabetes.csv
 
 ```bash
 # Logistic Regression
-python src/train.py --model_name logistic
+python -m src.train --model_name logistic
 
 # Random Forest
-python src/train.py --model_name random_forest
+python -m src/train.py --model_name random_forest
 
 # SVM
-python src/train.py --model_name svm
+python -m src/train.py --model_name svm
 ```
 
 📌 Model sau khi train sẽ nằm trong:
