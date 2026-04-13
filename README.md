@@ -1,4 +1,4 @@
-#  Diabetes Prediction Web App (Machine Learning Classification)
+#  Diabetes Prediction (Machine Learning Classification)
 
 Ứng dụng web dự đoán bệnh **Tiểu đường** sử dụng Machine Learning và Flask.  
 Hỗ trợ dự đoán **1 mẫu** hoặc **nhiều mẫu qua file CSV / Excel**.
@@ -27,7 +27,6 @@ Hỗ trợ dự đoán **1 mẫu** hoặc **nhiều mẫu qua file CSV / Excel**
 
 ```text
 disease_nckh/
-├── app.py
 ├── requirements.txt
 ├── README.md
 ├── data/
@@ -36,10 +35,7 @@ disease_nckh/
 │   └── processed/
 ├── model/
 ├── reports/
-├── src/
-├── templates/
-├── static/
-└── uploads/
+└── src/
 ```
 
 ---
@@ -51,7 +47,6 @@ disease_nckh/
 - Kaggle (khuyên dùng):  
   https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
 
----
 
 ### 4.2 Cách dùng dữ liệu
 
@@ -144,8 +139,16 @@ model/*.pkl
 
 ---
 
+## 8. chạy docker file
+```bash
+docker build -t diabetes .
 
-## 8. Đánh giá mô hình
+docker run -it --rm -v ${PWD}/data/raw:/phan_tung/data/raw  -v ${PWD}/model:/phan_tung/model  diabetes bash
+```
+- chạy các lệnh này vào docker containner sau đó chạy các lệnh phần 7 train model
+---
+
+## 9. Đánh giá mô hình
 
 ### metric đánh giá
 - Accuracy
@@ -160,7 +163,7 @@ model/*.pkl
 
 ---
 
-## 9. Báo cáo
+## 10. Báo cáo
 
 - EDA:
 ```

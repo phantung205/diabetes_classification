@@ -2,13 +2,13 @@ Model: Logistic
 
               precision    recall  f1-score   support
 
-           0       0.95      0.55      0.70       100
-           1       0.53      0.94      0.68        54
+           0       0.86      0.70      0.77       100
+           1       0.59      0.80      0.68        54
 
-    accuracy                           0.69       154
-   macro avg       0.74      0.75      0.69       154
-weighted avg       0.80      0.69      0.69       154
+    accuracy                           0.73       154
+   macro avg       0.73      0.75      0.73       154
+weighted avg       0.77      0.73      0.74       154
 
-ROC-AUC: 0.8222
+ROC-AUC: 0.8248
 
-Recall: 0.9444
+Recall: 0.7963
