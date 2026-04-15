@@ -1,6 +1,6 @@
 #  Diabetes Prediction (Machine Learning Classification)
 
-Ứng dụng web dự đoán bệnh **Tiểu đường** sử dụng Machine Learning và Flask.  
+Ứng dụng model dự đoán bệnh **Tiểu đường** sử dụng Machine Learning.  
 Hỗ trợ dự đoán **1 mẫu** hoặc **nhiều mẫu qua file CSV / Excel**.
 
 ---
