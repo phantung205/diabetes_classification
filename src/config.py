@@ -43,3 +43,11 @@ random_state = 42
 # dir model
 # ------------------------
 dir_model = os.path.join(base_dir,"model")
+
+
+# ------------------------
+# dir file result predict csv,xlxs , exel
+# ------------------------
+upload_folder  = os.path.join(base_dir,"uploads")
+result_folder  = os.path.join(base_dir,"results")
+
