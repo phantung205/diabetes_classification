@@ -1,7 +1,7 @@
 #  Diabetes Prediction (Machine Learning Classification)
 
 Ứng dụng model dự đoán bệnh **Tiểu đường** sử dụng Machine Learning.  
-Hỗ trợ dự đoán **1 mẫu** hoặc **nhiều mẫu qua file CSV / Excel**.
+Hỗ trợ dự đoán **1 mẫu** hoặc **nhiều mẫu qua file CSV / Excel** , giao diện Wed sự dụng Flask..
 
 ---
 
@@ -140,12 +140,22 @@ model/*.pkl
 ---
 
 ## 8. chạy docker file
+### 8.1 build docker image
 ```bash
 docker build -t diabetes .
+```
 
+### 8.2 vào trong container train 
+```bash
 docker run -it --rm -v ${PWD}/data/raw:/phan_tung/data/raw  -v ${PWD}/model:/phan_tung/model  diabetes bash
 ```
 - chạy các lệnh này vào docker containner sau đó chạy các lệnh phần 7 train model
+
+### 8.3 nếu đã có checkpoint thì chạy app luôn trong container
+```bash
+docker run --rm -p 5000:5000  -v ${PWD}/model:/phan_tung/model  diabetes 
+```
+
 ---
 
 ## 9. Đánh giá mô hình
@@ -174,6 +184,17 @@ reports/edu/report_diabetes.html
 ```
 reports/results/
 ```
+
+---
+
+## 11. Chạy ứng dụng wed, test
+
+```bash
+python app.py
+```
+Mặc định ứng dụng chạy tại:
+
+http://127.0.0.1:5000
 
 ---
 

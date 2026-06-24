@@ -59,7 +59,7 @@ def predict_file():
         filename = file.filename
 
         # check xem đã chọn file chưa
-        if file.filename == "":
+        if filename == "":
             raise ValueError("Chưa chọn file")
 
         # check đuôi đúng định dạng chưa
@@ -115,4 +115,8 @@ def validation(data):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=True
+    )
