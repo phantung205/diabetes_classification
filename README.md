@@ -26,16 +26,22 @@ Hỗ trợ dự đoán **1 mẫu** hoặc **nhiều mẫu qua file CSV / Excel**
 ## 3. Cấu trúc thư mục
 
 ```text
-disease_nckh/
-├── requirements.txt
-├── README.md
-├── data/
-│   ├── raw/
-│   │   └── diabetes.csv
-│   └── processed/
-├── model/
-├── reports/
-└── src/
+disease_classification/
+.
+├── data
+│   ├── processed
+│   └── raw
+├── model
+├── reports
+│   ├── eda
+│   ├── parameter
+│   └── result
+├── results
+├── src
+├── static
+│   └── css
+├── templates
+└── uploads
 ```
 
 ---
@@ -147,13 +153,13 @@ docker build -t diabetes .
 
 ### 8.2 vào trong container train 
 ```bash
-docker run -it --rm -v ${PWD}/data/raw:/phan_tung/data/raw  -v ${PWD}/model:/phan_tung/model  diabetes bash
+docker run -it --rm -v ${PWD}/data/raw:/phan_tung/data/raw  -v ${PWD}/model:/phan_tung/model -v ${PWD}/uploads:/phan_tung/uploads -v ${PWD}/results:/phan_tung/results  diabetes bash
 ```
 - chạy các lệnh này vào docker containner sau đó chạy các lệnh phần 7 train model
 
 ### 8.3 nếu đã có checkpoint thì chạy app luôn trong container
 ```bash
-docker run --rm -p 5000:5000  -v ${PWD}/model:/phan_tung/model  diabetes 
+docker run --rm -p 5000:5000  -v ${PWD}/model:/phan_tung/model -v ${PWD}/uploads:/phan_tung/uploads -v ${PWD}/results:/phan_tung/results  diabetes 
 ```
 
 ---
