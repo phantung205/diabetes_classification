@@ -9,6 +9,8 @@ COPY src ./src
 COPY app.py ./app.py
 COPY templates ./templates
 COPY static ./static
+COPY routes ./routes
+COPY services ./services
 
 EXPOSE 5000
 
