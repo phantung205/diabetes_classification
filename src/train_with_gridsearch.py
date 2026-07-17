@@ -6,47 +6,75 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 
 
 def get_args():
     parser = argparse.ArgumentParser(description="best parameter")
     parser.add_argument("--random_state","-r",type=int,default=config.random_state, help="random state")
-    parser.add_argument("--model_name","-m",type=str,default="svm", help="choice model")
+    parser.add_argument("--model_name","-m",type=str,default="random_forest", help="choice model")
     args = parser.parse_args()
     return args
 
 def parameter(args):
     if args.model_name == "random_forest":
-        clf = RandomForestClassifier(random_state=args.random_state)
+        clf = Pipeline([
+            ("imputer", SimpleImputer(strategy="mean")),
+            ("classifier", RandomForestClassifier(
+                random_state=args.random_state
+            ))
+        ])
+
         param_grid = {
-            "n_estimators": [100, 200, 300],
-            "criterion": ["gini", "entropy"],
-            "max_depth": [None, 5, 10],
+            "imputer__strategy": ["mean", "median"],
+            "classifier__n_estimators": [100, 200, 300],
+            "classifier__criterion": ["gini", "entropy"],
+            "classifier__max_depth": [None, 5, 10],
         }
 
     elif args.model_name == "logistic":
-        clf = LogisticRegression(random_state=args.random_state)
+        clf = Pipeline([
+            ("imputer", SimpleImputer(strategy="mean")),
+            ("scaler", StandardScaler()),
+            ("classifier", LogisticRegression(random_state=args.random_state,solver="lbfgs"))
+        ])
+
         param_grid = {
-            "C": [0.01, 0.1, 1, 10],
-            "max_iter": [500, 1000],
+            "imputer__strategy": ["mean", "median"],
+            "classifier__C": [0.01, 0.1, 1, 10],
+            "classifier__max_iter": [500, 1000,2000],
         }
 
     elif args.model_name == "svm":
-        clf = SVC(random_state=args.random_state)
+        clf = Pipeline([
+            ("imputer", SimpleImputer(strategy="mean")),
+            ("scaler", StandardScaler()),
+            ("classifier", SVC(random_state=args.random_state))
+        ])
         param_grid = {
-            "C": [0.1, 1, 10],
-            "kernel": ["rbf", "linear"],
-            "gamma": ["scale", "auto"]
+            "imputer__strategy": ["mean", "median"],
+            "classifier__C": [0.1, 1, 10],
+            "classifier__kernel": ["rbf", "linear"],
+            "classifier__gamma": ["scale", "auto"]
         }
 
     elif args.model_name == "xgboost":
-        clf = XGBClassifier(random_state=args.random_state)
+        clf = Pipeline([
+            ("imputer", SimpleImputer(strategy="mean")),
+            ("classifier", XGBClassifier(
+                random_state=args.random_state,
+                eval_metric="logloss"
+            ))
+        ])
         param_grid = {
-            "n_estimators": [200, 300, 500],
-            "learning_rate": [0.03, 0.05, 0.1],
-            "max_depth": [3, 4, 5],
-            "subsample": [0.8, 1.0],
-            "colsample_bytree": [0.8, 1.0],
+            "imputer__strategy": ["mean", "median"],
+            "classifier__n_estimators": [200, 300, 500],
+            "classifier__learning_rate": [0.03, 0.05, 0.1],
+            "classifier__max_depth": [3, 4, 5],
+            "classifier__subsample": [0.8, 1.0],
+            "classifier__colsample_bytree": [0.8, 1.0],
         }
 
     else:

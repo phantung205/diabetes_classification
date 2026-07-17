@@ -1,5 +1,6 @@
 Best Parameters:
-C: 1
-max_iter: 500
+classifier__C: 10
+classifier__max_iter: 500
+imputer__strategy: mean
 
-Best Recall: 0.5744
+Best Recall: 0.5931

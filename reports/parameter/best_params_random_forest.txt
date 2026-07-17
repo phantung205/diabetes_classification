@@ -1,6 +1,7 @@
 Best Parameters:
-criterion: gini
-max_depth: None
-n_estimators: 300
+classifier__criterion: entropy
+classifier__max_depth: 10
+classifier__n_estimators: 300
+imputer__strategy: median
 
-Best Recall: 0.6026
+Best Recall: 0.6260

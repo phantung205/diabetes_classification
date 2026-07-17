@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+
+        {% block title %}
+
+        {% endblock %}
+
+    </title>
+
+    <!-- css dùng chung -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/common.css') }}">
+
+    <!-- css riêng từng trang -->
+
+    {% block css %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('predict.home') }}">
+        Dự đoán
+    </a>
+
+    <a href="{{ url_for('report.reports') }}">
+        Báo cáo Train
+    </a>
+
+</nav>
+
+<hr>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+
+</html>
